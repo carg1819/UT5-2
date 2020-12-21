@@ -4,18 +4,106 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace UT5_1
 {
-    class Plato
+    class Plato : INotifyPropertyChanged
     {
-        public string Nombre { get; set; }
-        public string Imagen { get; set; }
-        public string Tipo { get; set; }
-        public bool Gluten { get; set; }
-        public bool Soja { get; set; }
-        public bool Leche { get; set; }
-        public bool Sulfitos { get; set; }
+        private String _nombre;
+        private String _imagen;
+        private String _tipo;
+        private bool _gluten;
+        private bool _soja;
+        private bool _leche;
+        private bool _sulfitos;
+
+        public string Nombre
+        {
+            get { return this._nombre; }
+            set
+            {
+                if (this._nombre != value)
+                {
+                    this._nombre = value;
+                    this.NotifyPropertyChanged("Nombre");
+                }
+            }
+        }
+
+        public string Imagen
+        {
+            get { return this._imagen; }
+            set
+            {
+                if (this._imagen != value)
+                {
+                    this._imagen = value;
+                    this.NotifyPropertyChanged("Imagen");
+                }
+            }
+        }
+        public string Tipo
+        {
+            get { return this._tipo; }
+            set
+            {
+                if (this._tipo != value)
+                {
+                    this._tipo = value;
+                    this.NotifyPropertyChanged("Tipo");
+                }
+            }
+        }
+        public bool Gluten
+        {
+            get { return this._gluten; }
+            set
+            {
+                if (this._gluten != value)
+                {
+                    this._gluten = value;
+                    this.NotifyPropertyChanged("Gluten");
+                }
+            }
+        }
+        public bool Soja
+        {
+            get { return this._soja; }
+            set
+            {
+                if (this._soja != value)
+                {
+                    this._soja = value;
+                    this.NotifyPropertyChanged("Soja");
+                }
+            }
+        }
+        public bool Leche
+        {
+            get { return this._leche; }
+            set
+            {
+                if (this._leche != value)
+                {
+                    this._leche = value;
+                    this.NotifyPropertyChanged("Leche");
+                }
+            }
+        }
+        public bool Sulfitos
+        {
+            get { return this._sulfitos; }
+            set
+            {
+                if (this._sulfitos != value)
+                {
+                    this._sulfitos = value;
+                    this.NotifyPropertyChanged("Sulfitos");
+                }
+            }
+        }
+
 
         public Plato(string nombre, string imagen, string tipo, bool gluten, bool soja, bool leche, bool sulfitos)
         {
@@ -30,6 +118,12 @@ namespace UT5_1
 
         public Plato()
         {
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public static List<Plato> GetSamples(string rutaImagenes)

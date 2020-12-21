@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UT5_1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="950">
+        Title="Platos" Height="700" Width="950" Icon="32 (6).ico">
 
     <Window.Resources>
         <local:paisConversor x:Key="paisConversor"></local:paisConversor>
